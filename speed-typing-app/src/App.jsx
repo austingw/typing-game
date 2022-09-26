@@ -9,8 +9,9 @@ function App() {
   }
 
   function wordCount(text) {
-    const wordsArr = text.split(" ");
-    console.log(wordsArr.length);
+    const wordsArr = text.trim().split(" ");
+    const filterArr = wordsArr.filter((word) => word !== "").length;
+    console.log(filterArr);
   }
 
   return (
