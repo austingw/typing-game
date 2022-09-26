@@ -12,12 +12,16 @@ function App() {
 
   function startGame() {
     setStart(true);
+    setTyped("");
   }
 
   function wordCount(text) {
     const wordsArr = text.trim().split(" ");
     const filterArr = wordsArr.filter((word) => word !== "").length;
-    console.log(filterArr);
+
+    if (timer === 0) {
+      return filterArr;
+    }
   }
 
   useEffect(() => {
@@ -36,7 +40,7 @@ function App() {
       <textarea onChange={handleChange} value={typed} />
       <h4>Time Remaining: {timer} seconds</h4>
       <button onClick={startGame}>Start</button>
-      <h1>Word Count:</h1>
+      <h1>Word Count: {wordCount(typed)}</h1>
     </div>
   );
 }
