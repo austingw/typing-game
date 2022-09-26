@@ -13,6 +13,7 @@ function App() {
   function startGame() {
     setStart(true);
     setTyped("");
+    setTimer(5);
   }
 
   function calculateWordCount(text) {
