@@ -4,10 +4,10 @@ function App() {
   const [typed, setTyped] = useState("");
   const [timer, setTimer] = useState(5);
   const [start, setStart] = useState(false);
+  const [wordCount, setWordCount] = useState(0);
 
   function handleChange(event) {
     setTyped(event.target.value);
-    console.log(typed);
   }
 
   function startGame() {
@@ -15,13 +15,9 @@ function App() {
     setTyped("");
   }
 
-  function wordCount(text) {
+  function calculateWordCount(text) {
     const wordsArr = text.trim().split(" ");
-    const filterArr = wordsArr.filter((word) => word !== "").length;
-
-    if (timer === 0) {
-      return filterArr;
-    }
+    return wordsArr.filter((word) => word !== "").length;
   }
 
   useEffect(() => {
@@ -31,6 +27,7 @@ function App() {
       }, 1000);
     } else {
       setStart(false);
+      setWordCount(calculateWordCount(typed));
     }
   }, [timer, start]);
 
@@ -40,7 +37,7 @@ function App() {
       <textarea onChange={handleChange} value={typed} />
       <h4>Time Remaining: {timer} seconds</h4>
       <button onClick={startGame}>Start</button>
-      <h1>Word Count: {wordCount(typed)}</h1>
+      <h1>Word Count: {wordCount}</h1>
     </div>
   );
 }
