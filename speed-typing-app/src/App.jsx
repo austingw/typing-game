@@ -2,6 +2,7 @@ import { useState } from "react";
 
 function App() {
   const [typed, setTyped] = useState("");
+  const [timer, setTimer] = useState(60);
 
   function handleChange(event) {
     setTyped(event.target.value);
@@ -18,7 +19,7 @@ function App() {
     <div className="App">
       <h1>Speed Typing!</h1>
       <textarea onChange={handleChange} value={typed} />
-      <h4>Time Remaining: </h4>
+      <h4>Time Remaining: {timer} seconds</h4>
       <button onClick={() => wordCount(typed)}>Start</button>
       <h1>Word Count:</h1>
     </div>
