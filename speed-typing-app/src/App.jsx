@@ -16,6 +16,11 @@ function App() {
     setTimer(5);
   }
 
+  function endGame() {
+    setStart(false);
+    setWordCount(calculateWordCount(typed));
+  }
+
   function calculateWordCount(text) {
     const wordsArr = text.trim().split(" ");
     return wordsArr.filter((word) => word !== "").length;
@@ -27,8 +32,7 @@ function App() {
         setTimer((prevTimer) => prevTimer - 1);
       }, 1000);
     } else {
-      setStart(false);
-      setWordCount(calculateWordCount(typed));
+      endGame();
     }
   }, [timer, start]);
 
