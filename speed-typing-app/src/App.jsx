@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
 
 function App() {
+  const STARTING_TIME = 15;
+
   const [typed, setTyped] = useState("");
-  const [timer, setTimer] = useState(5);
+  const [timer, setTimer] = useState(STARTING_TIME);
   const [start, setStart] = useState(false);
   const [wordCount, setWordCount] = useState(0);
 
@@ -13,7 +15,8 @@ function App() {
   function startGame() {
     setStart(true);
     setTyped("");
-    setTimer(5);
+    setTimer(STARTING_TIME);
+    setWordCount(0);
   }
 
   function endGame() {
@@ -39,9 +42,11 @@ function App() {
   return (
     <div className="App">
       <h1>Speed Typing!</h1>
-      <textarea onChange={handleChange} value={typed} />
+      <textarea onChange={handleChange} value={typed} disabled={!start} />
       <h4>Time Remaining: {timer} seconds</h4>
-      <button onClick={startGame}>Start</button>
+      <button onClick={startGame} disabled={start}>
+        Start
+      </button>
       <h1>Word Count: {wordCount}</h1>
     </div>
   );
