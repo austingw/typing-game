@@ -21,14 +21,14 @@ function App() {
   }
 
   useEffect(() => {
-    if (start === true) {
-      if (timer !== 0) {
-        setTimeout(() => {
-          setTimer((prevTimer) => prevTimer - 1);
-        }, 1000);
-      }
+    if (start && timer !== 0) {
+      setTimeout(() => {
+        setTimer((prevTimer) => prevTimer - 1);
+      }, 1000);
+    } else {
+      setStart(false);
     }
-  }, [timer]);
+  }, [timer, start]);
 
   return (
     <div className="App">
