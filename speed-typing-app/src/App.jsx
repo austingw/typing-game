@@ -1,8 +1,8 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function App() {
   const [typed, setTyped] = useState("");
-  const [timer, setTimer] = useState(60);
+  const [timer, setTimer] = useState(5);
 
   function handleChange(event) {
     setTyped(event.target.value);
@@ -14,6 +14,16 @@ function App() {
     const filterArr = wordsArr.filter((word) => word !== "").length;
     console.log(filterArr);
   }
+
+  useEffect(() => {
+    const countdown = setTimeout(() => {
+      setTimer((prevTimer) => prevTimer - 1);
+    }, 1000);
+
+    if (timer === 0) {
+      clearTimeout(countdown);
+    }
+  }, [timer]);
 
   return (
     <div className="App">
