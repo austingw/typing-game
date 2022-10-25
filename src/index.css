@@ -24,6 +24,7 @@ body {
   padding-top: 10px;
   font-family: "Press Start 2P", cursive;
   text-align: center;
+  height: 100vh;
 }
 
 body {
@@ -54,10 +55,10 @@ h1 {
 textarea {
   font-family: "Press Start 2P", cursive;
   border: 3px solid black;
-  width: 90%;
+  width: 80%;
   margin: 0 auto;
   outline: none;
-  height: 200px;
+  height: 360px;
   background: #00b800;
   padding: 10px;
 }
